@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TERRITORIOS EL BELLO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1 class="titulo">TERRITORIOS EL BELLO</h1>
+
+  <div class="tabs">
+    <button class="tab-button active" data-tab="registro">Registro</button>
+    <button class="tab-button" data-tab="consulta">Consulta</button>
+    <button class="tab-button" data-tab="exportar">Exportar</button>
+  </div>
+
+  <!-- Registro -->
+  <div class="tab-content active" id="registro">
+    <form id="territorioForm">
+      <input type="number" id="numero" placeholder="Número de territorio" required />
+      <input type="date" id="fechaInicio" required />
+      <input type="date" id="fechaFin" required />
+      <input type="text" id="encargado" placeholder="Encargado" required />
+      <textarea id="notas" placeholder="Observaciones adicionales"></textarea>
+      <button type="submit">Guardar entrada</button>
+    </form>
+  </div>
+
+  <!-- Consulta -->
+  <div class="tab-content" id="consulta">
+    <div class="filtros">
+      <input type="number" id="filtroNumero" placeholder="Filtrar por número" />
+      <input type="text" id="filtroEncargado" placeholder="Filtrar por encargado" />
+      <input type="date" id="filtroDesde" />
+      <input type="date" id="filtroHasta" />
+      <button onclick="buscarEntradas()">Buscar</button>
+    </div>
+    <div id="resultados" class="resultado-cuadro"></div>
+    <button id="btnTelegram" class="telegram-btn">📤</button>
+  </div>
+
+  <!-- Exportar -->
+  <div class="tab-content" id="exportar">
+    <div class="filtros">
+      <input type="number" id="exportNumero" placeholder="Número de territorio a exportar" />
+      <button onclick="exportarTerritorioTXT()">Exportar TXT</button>
+      <button onclick="exportarTerritorioPDF()">Exportar PDF</button>
+      <button onclick="exportarTerritorioCSV()">Exportar CSV</button>
+      <button onclick="respaldarDatos()">Respaldar todo</button>
+      <input type="file" id="archivoRestaurar" />
+      <button onclick="restaurarDesdeArchivo()">Restaurar</button>
+    </div>
+  </div>
+
+  <!-- script.js como módulo (usa imports desde CDN para Firebase) -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
